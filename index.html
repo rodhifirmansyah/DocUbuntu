@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ubuntu Setup Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <main class="container">
+        <section class="documentation">
+            <h1># Install Ubuntu</h1>
+           
+            <p>Langkah pertama adalah mengaktifkan fitur WSL melalui "Windows Features". Berikut langkahnya:
+            
+            <br>Buka Command Prompt atau PowerShell dengan hak akses administrator (klik kanan dan pilih "Run as Administrator").
+            
+            <br>Jalankan perintah berikut untuk mengaktifkan WSL:</p>
+
+            <div class="code-block">
+                <pre><code>wsl --list --online</code></pre>
+                <button onclick="copyCode('code-1')">📋</button>
+            </div>
+
+            <p>Update Wsl</p>
+
+            <div class="code-block">
+                <pre><code>wsl --set-default-version 2</code></pre>
+                <pre><code>wsl --update</code></pre>
+                <button onclick="copyCode('code-2')">📋</button>
+            </div>
+
+        </section>
+    </main>
+
+    <main class="container">
+        <section class="documentation">
+            <h1># Uninstall Ubuntu</h1>
+    
+            <p>Langkah pertama adalah mengaktifkan fitur WSL melalui "Windows Features". Berikut langkahnya:
+    
+                <br>Buka Command Prompt atau PowerShell dengan hak akses administrator (klik kanan dan pilih "Run as
+                Administrator").
+    
+                <br>Jalankan perintah berikut untuk mengUninstall WSL:
+            </p>
+    
+            <div class="code-block">
+                <pre><code>wsl --uninstall</code></pre>
+                <button onclick="copyCode('code-1')">📋</button>
+            </div>
+    
+            <p>Untuk menghapus distribusi tertentu, gunakan perintah berikut:</p>
+    
+            <div class="code-block">
+                <pre><code>wsl --unregister "NamaDristribusi"</code></pre>
+                <button onclick="copyCode('code-2')">📋</button>
+            </div>
+
+            <p>Misalnya, jika ingin menghapus Ubuntu, perintahnya:</p>
+            
+            <div class="code-block">
+                <pre><code>wsl --unregister Ubuntu</code></pre>
+                <button onclick="copyCode('code-2')">📋</button>
+            </div>
+
+            <p>Menghentikan Semua Distribusi Linux Aktif</p>
+            
+            <div class="code-block">
+                <pre><code>wsl --shutdown</code></pre>
+                <button onclick="copyCode('code-2')">📋</button>
+            </div>
+    
+        </section>
+    </main>
+
+    <main class="container">
+        <section class="documentation">
+            <h1># Setup Ubuntu</h1>
+
+            <p>Setup awal Ubuntu</p>
+            <div class="code-block">
+                <pre><code>sudo apt update</code></pre>
+                <pre><code>sudo apt upgrade</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function copyCode(codeId) {
+            const codeElement = document.getElementById(codeId);
+            const range = document.createRange();
+            range.selectNode(codeElement);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            alert("Kode disalin ke clipboard!");
+        }
+    </script>
+</body>
+
+</html>
