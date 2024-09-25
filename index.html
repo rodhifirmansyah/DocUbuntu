@@ -14,67 +14,71 @@
     <main class="container">
         <section class="documentation">
             <h1># Install Ubuntu</h1>
-           
+
             <p>Langkah pertama adalah mengaktifkan fitur WSL melalui "Windows Features". Berikut langkahnya:
-            
-            <br>Buka Command Prompt atau PowerShell dengan hak akses administrator (klik kanan dan pilih "Run as Administrator").
-            
-            <br>Jalankan perintah berikut untuk mengaktifkan WSL:</p>
+                <br>Buka Command Prompt atau PowerShell dengan hak akses administrator (klik kanan dan pilih "Run as
+                Administrator").
+                <br>Jalankan perintah berikut untuk mengaktifkan WSL:
+            </p>
 
             <div class="code-block">
-                <pre><code>wsl --list --online</code></pre>
+                <pre id="code-1"><code>wsl --list --online</code></pre>
                 <button onclick="copyCode('code-1')">📋</button>
+            </div>
+
+            <p>Update Wsl Version</p>
+
+            <div class="code-block">
+                <pre id="code-2"><code>wsl --set-default-version 2</code></pre>
+                <button onclick="copyCode('code-2')">📋</button>
+
             </div>
 
             <p>Update Wsl</p>
 
             <div class="code-block">
-                <pre><code>wsl --set-default-version 2</code></pre>
-                <pre><code>wsl --update</code></pre>
-                <button onclick="copyCode('code-2')">📋</button>
+                <pre id="code-3"><code>wsl --update</code></pre>
+                <button onclick="copyCode('code-3')">📋</button>
             </div>
-
         </section>
     </main>
 
     <main class="container">
         <section class="documentation">
             <h1># Uninstall Ubuntu</h1>
-    
+
             <p>Langkah pertama adalah mengaktifkan fitur WSL melalui "Windows Features". Berikut langkahnya:
-    
                 <br>Buka Command Prompt atau PowerShell dengan hak akses administrator (klik kanan dan pilih "Run as
                 Administrator").
-    
                 <br>Jalankan perintah berikut untuk mengUninstall WSL:
             </p>
-    
+
             <div class="code-block">
-                <pre><code>wsl --uninstall</code></pre>
-                <button onclick="copyCode('code-1')">📋</button>
+                <pre id="code-4"><code>wsl --uninstall</code></pre>
+                <button onclick="copyCode('code-4')">📋</button>
             </div>
-    
+
             <p>Untuk menghapus distribusi tertentu, gunakan perintah berikut:</p>
-    
+
             <div class="code-block">
-                <pre><code>wsl --unregister "NamaDristribusi"</code></pre>
-                <button onclick="copyCode('code-2')">📋</button>
+                <pre id="code-5"><code>wsl --unregister "NamaDistribusi"</code></pre>
+                <button onclick="copyCode('code-5')">📋</button>
             </div>
 
             <p>Misalnya, jika ingin menghapus Ubuntu, perintahnya:</p>
-            
+
             <div class="code-block">
-                <pre><code>wsl --unregister Ubuntu</code></pre>
-                <button onclick="copyCode('code-2')">📋</button>
+                <pre id="code-6"><code>wsl --unregister Ubuntu</code></pre>
+                <button onclick="copyCode('code-6')">📋</button>
             </div>
 
             <p>Menghentikan Semua Distribusi Linux Aktif</p>
-            
+
             <div class="code-block">
-                <pre><code>wsl --shutdown</code></pre>
-                <button onclick="copyCode('code-2')">📋</button>
+                <pre id="code-7"><code>wsl --shutdown</code></pre>
+                <button onclick="copyCode('code-7')">📋</button>
             </div>
-    
+
         </section>
     </main>
 
@@ -84,22 +88,36 @@
 
             <p>Setup awal Ubuntu</p>
             <div class="code-block">
-                <pre><code>sudo apt update</code></pre>
-                <pre><code>sudo apt upgrade</code></pre>
+                <pre id="code-8"><code>sudo apt update</code></pre>
+                <button onclick="copyCode('code-8')">📋</button>
+
+            </div>
+
+            <div class="code-block">
+                <pre id="code-9"><code>sudo apt upgrade</code></pre>
+                <button onclick="copyCode('code-9')">📋</button>
             </div>
         </section>
     </main>
 
     <script>
-        function copyCode(codeId) {
-            const codeElement = document.getElementById(codeId);
-            const range = document.createRange();
-            range.selectNode(codeElement);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
+        function copyCode(elementId) {
+            // Ambil elemen berdasarkan ID
+            const codeElement = document.getElementById(elementId);
+
+            // Buat elemen input tersembunyi untuk menyalin teks
+            const tempInput = document.createElement("textarea"); // Menggunakan textarea untuk salin multiline
+            tempInput.value = codeElement.innerText; // Dapatkan teks dari elemen <code>
+            document.body.appendChild(tempInput);
+
+            // Pilih dan salin teks
+            tempInput.select();
             document.execCommand("copy");
-            window.getSelection().removeAllRanges();
-            alert("Kode disalin ke clipboard!");
+
+            // Hapus input sementara
+            document.body.removeChild(tempInput);
+
+            // Opsional: memberi tahu pengguna bahwa kode telah disalin
         }
     </script>
 </body>
